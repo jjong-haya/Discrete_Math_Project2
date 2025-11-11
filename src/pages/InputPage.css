@@ -1,0 +1,97 @@
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  max-width: 500px;
+  min-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 12px rgba(0, 0, 0, 0.05);
+  max-height: 90vh;
+}
+
+.input-title-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input-title {
+  font-size: 30px;
+}
+
+.input-description {
+  font-size: 20px;
+  color: #555;
+}
+
+.input-form {
+  border: 1px solid #8f8f8f;
+  border-radius: 4px;
+  padding: 10px;
+  width: 50vw;
+  min-width: 450px;
+  max-width: 450px;
+  overflow: auto;
+
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.matrix-row-input {
+  box-sizing: border-box;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+  width: 180px;
+}
+
+.matrix-row-input:focus {
+  border-color: #87bffc;
+  box-shadow: 1px 1px 3px rgb(178, 215, 255);
+  outline: none;
+}
+
+.matrix-row-input.error {
+  border-color: #dc3545;
+  background-color: #fff8f8;
+  color: #dc3545;
+}
+
+.matrix-row-input.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.matrix-row-input.error::placeholder {
+  color: #dc3545;
+  opacity: 0.7;
+}
+
+.submit-button {
+  margin-top: 25px;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: white;
+  width: 300px;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+

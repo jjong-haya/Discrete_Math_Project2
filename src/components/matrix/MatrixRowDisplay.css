@@ -1,0 +1,59 @@
+.matrix-row-display {
+  display: flex;
+  justify-content: center;
+  margin: 7px auto;
+  gap: 10px;
+}
+
+.matrix-cell:not(.is-value-1) {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-family: monospace;
+  background-color: #f4f4f4;
+  color: #888;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.matrix-cell:not(.is-value-1):hover {
+  background-color: #cce5ff;
+  color: #0015d1;
+}
+
+.matrix-row-display.active .matrix-cell:not(.is-value-1) {
+  border-color: #007bff;
+  background-color: #ffffff;
+  color: #333;
+  font-weight: bold;
+}
+
+.matrix-row-display.active .matrix-cell:not(.is-value-1):hover {
+  background-color: #ffffff;
+}
+
+.matrix-cell.is-value-1 {
+  width: 40px;
+  height: 40px;
+  border: 2px solid blue;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-family: monospace;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: #cce5ff;
+  color: #0015d1;
+  font-weight: bold;
+}
+
+.matrix-cell.is-value-1:hover {
+  background-color: #ffffff;
+}

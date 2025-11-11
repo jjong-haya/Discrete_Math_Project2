@@ -1,0 +1,35 @@
+.matrix-display {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 275px;
+    margin: 10px auto;
+    font-family: monospace;
+    border: 1px solid #8d8d8d;
+}
+
+.matrix-display-cell {
+    height: 38px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #555555;
+    border-bottom: 1px solid #8d8d8d;
+    border-right: 1px solid #8d8d8d;
+}
+
+.matrix-display-cell:nth-child(5n) {
+    border-right: none;
+}
+.matrix-display-cell:nth-child(n + 21) {
+    border-bottom: none;
+}
+
+.matrix-display-cell.is-active {
+    background-color: #cce5ff;
+    color: #0015d1;
+    font-weight: bold;
+}
