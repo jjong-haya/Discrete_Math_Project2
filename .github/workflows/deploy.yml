@@ -1,0 +1,47 @@
+# .github/workflows/deploy.yml
+
+name: Deploy React App to GitHub Pages
+
+# 1. 언제 실행할 것인가 (main 브랜치에 push 될 때)
+on:
+  push:
+    branches: ["main"]
+
+# 2. 권한 설정 (배포를 위해 필요)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 3. 실행할 작업들
+jobs:
+  build:
+    runs-on: ubuntu-latest # 우분투 환경에서 실행
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4 # 코드를 내려받음
+      - name: Set up Node.js
+        uses: actions/setup-node@v4 # Node.js 설치
+        with:
+          node-version: 18 # (노드 18버전 사용)
+      - name: Install dependencies
+        run: npm install # 4. npm install 실행
+      - name: Build
+        run: npm run build # 5. npm run build 실행 (dist 폴더 생성)
+      - name: Setup Pages
+        uses: actions/configure-pages@v4 # GitHub Pages 설정
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3 # 7. build 결과물(dist 폴더)을 업로드
+        with:
+          path: './dist'
+
+  deploy:
+    needs: build # build 작업이 끝나야 함
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # 배포 URL 설정
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # 업로드된 결과물로 배포
