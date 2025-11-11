@@ -10,7 +10,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/Discrete_Math_Project2/'>
       <ToastProvider>
         <MatrixProvider>
           <App />
