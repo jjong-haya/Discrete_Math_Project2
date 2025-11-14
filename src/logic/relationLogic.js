@@ -64,35 +64,34 @@ export const getTransitiveClosure = (matrix) => {
 };
 
 export const getEquivalenceClasses = (matrix) => {
-  const classes = [];
   const visited = new Array(N).fill(false);
-  const elements = [1, 2, 3, 4, 5];
+  const elements = Array.from({length: N}, (_, i) => i + 1);
+  const classes = [];
 
-  if (!elements || elements.length !== N) {
-    elements = Array.from({length: N}, (_, i) => i + 1);
-  }
+  const dfs = (start, currentClass) => {
+    visited[start] = true;
+    currentClass.push(elements[start]);
 
-  for (let i = 0; i < N; i++) {
-    if (visited[i]) continue;
-
-    const currentClass = [];
-    visited[i] = true;
-    currentClass.push(elements[i]);
-
-    for (let j = i + 1; j < N; j++) {
-      if (matrix[i][j] === 1) {
-        visited[j] = true;
-        currentClass.push(elements[j]);
+    for (let next = 0; next < N; next++) {
+      if (!visited[next] && matrix[start][next] === 1) {
+        dfs(next, currentClass);
       }
     }
-    classes.push(currentClass);
+  };
+
+  for (let i = 0; i < N; i++) {
+    if (!visited[i]) {
+      const cls = [];
+      dfs(i, cls);
+      classes.push(cls);
+    }
   }
-  return classes.map(cls => `{${cls.join(', ')}}`).join(', ');
+
+  return classes.map((cls) => `{${cls.join(', ')}}`).join(', ');
 };
 
 export const analyzeRelation = (matrix) => {
   const elements = [1, 2, 3, 4, 5];
-
   const results = {};
   results.originalMatrix = deepCopy(matrix);
   results.elements = elements;
@@ -105,43 +104,44 @@ export const analyzeRelation = (matrix) => {
 
   if (results.isEquivalence) {
     results.classes = getEquivalenceClasses(matrix);
-  } else {
-    results.closures = [];
-    let currentMatrix = deepCopy(matrix);
-
-    if (!results.isReflexive) {
-      const closure = getReflexiveClosure(currentMatrix);
-      results.closures.push({
-        type: '반사(Reflexive)',
-        before: deepCopy(currentMatrix),
-        after: closure,
-      });
-      currentMatrix = closure;
-    }
-
-    if (!results.isSymmetric) {
-      const closure = getSymmetricClosure(currentMatrix);
-      results.closures.push({
-        type: '대칭(Symmetric)',
-        before: deepCopy(currentMatrix),
-        after: closure,
-      });
-      currentMatrix = closure;
-    }
-
-    if (!results.isTransitive) {
-      const closure = getTransitiveClosure(currentMatrix);
-      results.closures.push({
-        type: '추이(Transitive)',
-        before: deepCopy(currentMatrix),
-        after: closure,
-      });
-      currentMatrix = closure;
-    }
-
-    results.finalEquivalenceMatrix = currentMatrix;
-    results.finalClasses = getEquivalenceClasses(currentMatrix);
+    return results;
   }
+
+  results.closures = [];
+  let currentMatrix = deepCopy(matrix);
+
+  if (!results.isReflexive) {
+    const closure = getReflexiveClosure(currentMatrix);
+    results.closures.push({
+      type: '반사(Reflexive)',
+      before: deepCopy(currentMatrix),
+      after: closure,
+    });
+    currentMatrix = closure;
+  }
+
+  if (!results.isSymmetric) {
+    const closure = getSymmetricClosure(currentMatrix);
+    results.closures.push({
+      type: '대칭(Symmetric)',
+      before: deepCopy(currentMatrix),
+      after: closure,
+    });
+    currentMatrix = closure;
+  }
+
+  if (!results.isTransitive) {
+    const closure = getTransitiveClosure(currentMatrix);
+    results.closures.push({
+      type: '추이(Transitive)',
+      before: deepCopy(currentMatrix),
+      after: closure,
+    });
+    currentMatrix = closure;
+  }
+
+  results.finalEquivalenceMatrix = currentMatrix;
+  results.finalClasses = getEquivalenceClasses(currentMatrix);
 
   return results;
 };
