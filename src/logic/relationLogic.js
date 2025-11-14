@@ -1,5 +1,6 @@
 const N = 5;
 const deepCopy = (matrix) => matrix.map((row) => [...row]);
+
 export const isReflexive = (matrix) => {
   for (let i = 0; i < N; i++) {
     if (matrix[i][i] !== 1) return false;
@@ -28,7 +29,6 @@ export const isTransitive = (matrix) => {
   }
   return true;
 };
-
 
 export const getReflexiveClosure = (matrix) => {
   const closure = deepCopy(matrix);
@@ -68,6 +68,10 @@ export const getEquivalenceClasses = (matrix) => {
   const visited = new Array(N).fill(false);
   const elements = [1, 2, 3, 4, 5];
 
+  if (!elements || elements.length !== N) {
+    elements = Array.from({length: N}, (_, i) => i + 1);
+  }
+
   for (let i = 0; i < N; i++) {
     if (visited[i]) continue;
 
@@ -87,9 +91,11 @@ export const getEquivalenceClasses = (matrix) => {
 };
 
 export const analyzeRelation = (matrix) => {
+  const elements = [1, 2, 3, 4, 5];
+
   const results = {};
   results.originalMatrix = deepCopy(matrix);
-
+  results.elements = elements;
 
   results.isReflexive = isReflexive(matrix);
   results.isSymmetric = isSymmetric(matrix);
@@ -132,6 +138,7 @@ export const analyzeRelation = (matrix) => {
       });
       currentMatrix = closure;
     }
+
     results.finalEquivalenceMatrix = currentMatrix;
     results.finalClasses = getEquivalenceClasses(currentMatrix);
   }

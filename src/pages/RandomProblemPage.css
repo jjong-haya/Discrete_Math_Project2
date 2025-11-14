@@ -1,0 +1,301 @@
+.random-problem-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 12px rgba(0, 0, 0, 0.05);
+  max-height: 90vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.problem-title {
+  font-size: 45px;
+  text-align: center;
+}
+
+.problem-stitle {
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.result-details ul {
+  list-style-type: none;
+  background-color: #eee;
+  padding: 20px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.result-details li {
+  font-size: 20px;
+  font-weight: 550;
+  margin-bottom: 10px;
+}
+
+.result-details li:last-child {
+  margin-bottom: 0;
+}
+
+.result-summary {
+  font-size: 20px;
+  padding: 20px;
+  background-color: #eee;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.result-section {
+  margin-top: 30px;
+}
+
+.closure-step {
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.clocure-stitle {
+  font-size: 20px;
+}
+
+.closure-matrices {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.code-block {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 20px;
+  background-color: #eee;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.problem-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+  padding-right: 10px;
+}
+
+.control-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: "Jua", sans-serif;
+}
+
+.control-button.show-answer {
+  background-color: #007bff;
+}
+.control-button.show-answer:hover {
+  background-color: #0056b3;
+}
+
+.control-button.next-problem {
+  background-color: #28a745;
+}
+.control-button.next-problem:hover {
+  background-color: #218838;
+}
+
+.control-button.back-home {
+  background-color: #6c757d;
+}
+.control-button.back-home:hover {
+  background-color: #5a6268;
+}
+
+.settings-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.random-problem-container::-webkit-scrollbar {
+  width: 8px;
+}
+.random-problem-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.random-problem-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+.random-problem-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  min-width: 500px;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}
+.modal-close-button:hover {
+  color: #000;
+}
+
+.modal-done-button {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 150px;
+}
+
+.settings-panel {
+  background-color: #ffffff;
+  border-radius: 8px 8px 0 0;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.settings-panel h3 {
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.settings-group {
+  margin-bottom: 20px;
+}
+
+.settings-label {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.settings-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.settings-input-container {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-input-container input[type="text"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Jua", sans-serif;
+}
+
+.settings-input-container p {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.random-matrix-options {
+  border-top: 1px dashed #ccc;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.max-ones-input {
+  width: 60px;
+  padding: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Jua", sans-serif;
+  text-align: center;
+}
+
+.settings-info {
+  font-size: 14px;
+  color: #0056b3;
+  margin: 5px 0 0 0;
+}
+
+.custom-matrix-input-area {
+  border: 1px solid #8f8f8f;
+  border-radius: 4px;
+  padding: 10px;
+  width: 95%;
+  background-color: #fff;
+}
+
+.custom-matrix-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.custom-matrix-header p {
+  margin: 0;
+}
+
+.reset-matrix-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-family: "Jua", sans-serif;
+  cursor: pointer;
+}
+
+.reset-matrix-button:hover {
+  background-color: #c82333;
+}

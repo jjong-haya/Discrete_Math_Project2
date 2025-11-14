@@ -95,3 +95,24 @@
   background-color: #218838;
 }
 
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.submit-button {
+  margin-top: 0;
+  width: 200px;
+}
+
+.submit-button.home-button {
+  background-color: #6c757d;
+}
+
+.submit-button.home-button:hover {
+  background-color: #5a6268;
+}
